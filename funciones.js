@@ -12,3 +12,14 @@ const convertPathInAbsolute = (ruta) => {
     }
     return path.resolve(ruta)
   }
+//////////PREGUNTO SI ES UN DIRECTORIO///////////
+const pathIsDirectory = (ruta) => {
+  return fs.lstatSync(ruta).isDirectory()
+}
+console.log(pathIsDirectory(process.argv[2]));
+
+////////PREGUNTO SI ES UN ARCHIVO//////////
+const pathIsFile = function (ruta) {
+  return fs.statSync(ruta).isFile()
+}
+console.log(pathIsFile(process.argv[2])); 
