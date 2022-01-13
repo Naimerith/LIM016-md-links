@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const myArgument = process.argv[2]; 
+const myArgument = process.argv[2];
 
 ////////COMO SABER SI LA RUTA EXISTE/////////
 const pathExists = function (ruta) {
@@ -76,5 +76,19 @@ const readFileAndExtractLinks = (ruta) => {
   }
   return arrayLinks;
 }
-console.log(readFileAndExtractLinks(myArgument));
+//console.log(readFileAndExtractLinks(myArgument));
+
+///////FUNCION QUE LEE DIRECTORIOS Y EXTRAE LOS LINKS ////////
+const readDirectory = (arrayFileMd) => {
+  const arrayReadDirectory = [];
+  arrayFileMd.forEach(file => {
+    const arrayLinksDirectory = readFileAndExtractLinks(file);
+    arrayReadDirectory.push(arrayLinksDirectory);
+  })
+  return arrayReadDirectory.flat();
+}
+const arrayFile = travelDirectoryAndFile(convertPathInAbsolute(myArgument));
+
+console.log(readDirectory(arrayFile));
+
 
