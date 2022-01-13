@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const myArgument = process.argv[2]; //la ruta que yo le pase en la terminal ([0]node, [1]nombre archivo, [2]ruta o archivo)
+const myArgument = process.argv[2]; 
 
 ////////COMO SABER SI LA RUTA EXISTE/////////
 const pathExists = function (ruta) {
@@ -16,6 +16,7 @@ const convertPathInAbsolute = (ruta) => {
   return path.resolve(ruta)
 }
 console.log(convertPathInAbsolute(myArgument));
+
 //////////PREGUNTO SI ES UN DIRECTORIO///////////
 const pathIsDirectory = (ruta) => {
   return fs.lstatSync(ruta).isDirectory()
@@ -30,22 +31,50 @@ const pathIsFile = function (ruta) {
 const travelDirectoryAndFile = (ruta) => {
   let arrayResult = [];
   if (pathIsDirectory(ruta)) {
-    const arrayDirectory = fs.readdirSync(ruta); 
+    const arrayDirectory = fs.readdirSync(ruta);
     //console.log(arrayDirectory)
     arrayDirectory.forEach((archivo) => {
-      const routeList = path.join(ruta, archivo); 
+      const routeList = path.join(ruta, archivo);
       //console.log(routeList); 
-      if (pathIsDirectory(routeList)) { 
-        arrayResult = arrayResult.concat(travelDirectoryAndFile(routeList)) 
+      if (pathIsDirectory(routeList)) {
+        arrayResult = arrayResult.concat(travelDirectoryAndFile(routeList))
       }
-      if (path.extname(routeList) === ".md") {  
-        arrayResult.push(routeList);  
+      if (path.extname(routeList) === ".md") {
+        arrayResult.push(routeList);
       }
     })
-  }else { 
-    arrayResult.push(ruta)  
+  } else {
+    arrayResult.push(ruta)
   }
-  return arrayResult  
+  return arrayResult
 }
-console.log(travelDirectoryAndFile(convertPathInAbsolute(myArgument)));
+//console.log(travelDirectoryAndFile(convertPathInAbsolute(myArgument)));
+
+/////////LEE EL ARCHIVO Y EXTRAE LOS LINKS////////////////
+const readFileAndExtractLinks = (ruta) => {
+  const arrayLinks = [];
+
+  const expRegFile = /\[(.*)\]\((https*?:([^"')\s]+))/gi;
+  const expRegUrl = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n)]+)(?=\))/gi;
+  const expRegTextUrl = /\[(.*)\]/gi;
+  ////=== lee el archivo ===/////
+  const readFile = fs.readFileSync(ruta, "UTF-8");
+
+  const allLinksMd = readFile.match(expRegFile);
+  const arrayOnlyUrl = readFile.match(expRegUrl);
+
+  if (allLinksMd != null) {
+    for (let i = 0; i < allLinksMd.length; i++) {
+      const textMd = allLinksMd[i].match(expRegTextUrl)[0].substring(0, 49);
+      const objLinks = {
+        href: arrayOnlyUrl[i],
+        text: textMd,
+        file: convertPathInAbsolute(myArgument).toString()
+      }
+      arrayLinks.push(objLinks);
+    }
+  }
+  return arrayLinks;
+}
+console.log(readFileAndExtractLinks(myArgument));
 
