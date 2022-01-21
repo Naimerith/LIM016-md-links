@@ -1,5 +1,7 @@
-const fs = require('fs');
-const path = require('path');
+
+import fetch from 'node-fetch';
+import fs from 'fs';
+import path from 'path';
 
 const myArgument = process.argv[2];
 
@@ -7,6 +9,7 @@ const myArgument = process.argv[2];
 const pathExists = function (ruta) {
   return fs.existsSync(ruta);
 }
+//console.log('la ruta existe?', pathExists(myArgument));
 
 ////////// CONVIERTO LA RUTA EN ABSOLUTA /////////// 
 const convertPathInAbsolute = (ruta) => {
@@ -15,17 +18,20 @@ const convertPathInAbsolute = (ruta) => {
   }
   return path.resolve(ruta)
 }
-console.log(convertPathInAbsolute(myArgument));
+//console.log('se convierte la ruta en absoluta', convertPathInAbsolute(myArgument));
 
 //////////PREGUNTO SI ES UN DIRECTORIO///////////
 const pathIsDirectory = (ruta) => {
   return fs.lstatSync(ruta).isDirectory()
 }
+//console.log('La ruta es un directorio?:', pathIsDirectory(myArgument));
 
 ////////PREGUNTO SI ES UN ARCHIVO//////////
 const pathIsFile = function (ruta) {
   return fs.statSync(ruta).isFile()
 }
+//console.log('La ruta es un archivo?:', pathIsFile(myArgument));
+
 
 //////////RECORRER DIRECTORIO DE FORMA RECURSIVA///////////
 const travelDirectoryAndFile = (ruta) => {
@@ -48,7 +54,7 @@ const travelDirectoryAndFile = (ruta) => {
   }
   return arrayResult
 }
-//console.log(travelDirectoryAndFile(convertPathInAbsolute(myArgument)));
+//console.log('Estos son los archivos dentro de la ruta:', travelDirectoryAndFile(convertPathInAbsolute(myArgument)));
 
 /////////LEE EL ARCHIVO Y EXTRAE LOS LINKS////////////////
 const readFileAndExtractLinks = (ruta) => {
@@ -76,7 +82,7 @@ const readFileAndExtractLinks = (ruta) => {
   }
   return arrayLinks;
 }
-//console.log(readFileAndExtractLinks(myArgument));
+//console.log('Estos son los links dentro de el archivo:', readFileAndExtractLinks(myArgument));
 
 ///////FUNCION QUE LEE DIRECTORIOS Y EXTRAE LOS LINKS ////////
 const readDirectory = (arrayFileMd) => {
@@ -89,6 +95,47 @@ const readDirectory = (arrayFileMd) => {
 }
 const arrayFile = travelDirectoryAndFile(convertPathInAbsolute(myArgument));
 
-console.log(readDirectory(arrayFile));
+//console.log('Estos son los links dentro de la ruta:', readDirectory(arrayFile)); 
+
+
+////////VALIDAR LINKS CON PETICIONES HTTP////////
+const validateLinks = (urls) => {
+  return Promise.all(urls.map((arrayLinks) => {
+    return fetch(arrayLinks.href)
+      .then((resolve) => {
+        const objResolve = {
+          ...arrayLinks,
+          status: resolve.status,
+          ok: (resolve.status >= 200) && (resolve.status <= 399) ? "ok" : "fallo"
+        }
+        return objResolve;
+      })
+      .catch(() => {
+        return {
+          ...arrayLinks,
+          status: "Este link esta roto",
+          ok: "fallo"
+        }
+      })
+  })
+  )
+}
+
+validateLinks(readDirectory(arrayFile)).then(res => {
+  console.log('Asi validamos los links:', res);
+});
+
+
+export default {
+  pathExists,
+  convertPathInAbsolute,
+  pathIsDirectory,
+  pathIsFile,
+  travelDirectoryAndFile,
+  readFileAndExtractLinks,
+  readDirectory,
+  validateLinks
+}
+
 
 
