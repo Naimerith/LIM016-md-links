@@ -75,7 +75,7 @@ const readFileAndExtractLinks = (ruta) => {
       const objLinks = {
         href: arrayOnlyUrl[i],
         text: textMd,
-        file: convertPathInAbsolute(myArgument).toString()
+        file: convertPathInAbsolute(ruta).toString()
       }
       arrayLinks.push(objLinks);
     }
@@ -93,9 +93,9 @@ const readDirectory = (arrayFileMd) => {
   })
   return arrayReadDirectory.flat();
 }
-const arrayFile = travelDirectoryAndFile(convertPathInAbsolute(myArgument));
+//const arrayFile = travelDirectoryAndFile(convertPathInAbsolute(myArgument));
 
-//console.log('Estos son los links dentro de la ruta:', readDirectory(arrayFile)); 
+//console.log('Estos son los links dentro de la ruta:', readDirectory(arrayFile));
 
 
 ////////VALIDAR LINKS CON PETICIONES HTTP////////
@@ -106,24 +106,24 @@ const validateLinks = (urls) => {
         const objResolve = {
           ...arrayLinks,
           status: resolve.status,
-          ok: (resolve.status >= 200) && (resolve.status <= 399) ? "ok" : "fallo"
+          ok: (resolve.status >= 200) && (resolve.status <= 399) ? "ok" : "fail"
         }
         return objResolve;
       })
       .catch(() => {
         return {
           ...arrayLinks,
-          status: "Este link esta roto",
-          ok: "fallo"
+          status: "broken",
+          ok: "fail"
         }
       })
   })
   )
 }
 
-validateLinks(readDirectory(arrayFile)).then(res => {
+/* validateLinks(readDirectory(arrayFile)).then(res => {
   console.log('Asi validamos los links:', res);
-});
+}); */
 
 
 export default {
