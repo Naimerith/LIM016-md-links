@@ -29,7 +29,7 @@ algunas estadísticas.
 
 ## 2. Instalación 📥
 
-
+Módulo instalable via npm i md-links-naimerith
 
 ## 3. Plan de Acción 📍
 El desarrollo del proyecto se realizó a través de Git Projects con una serie de issues y milestones para priorizar y organizar el trabajo, y para poder hacer seguimiento del progreso del mismo. 
