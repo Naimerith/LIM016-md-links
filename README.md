@@ -32,7 +32,8 @@ algunas estadísticas.
 
 
 ## 3. Plan de Acción 📍
-
+El desarrollo del proyecto se realizó a través de Git Projects con una serie de issues y milestones para priorizar y organizar el trabajo, y para poder hacer seguimiento del progreso del mismo. 
+Mediante issues y milestones se pudo organizar y planificar tareas y objetivos concretos.
 
 ### Diagrama de Flujo de Api
 
@@ -42,7 +43,7 @@ algunas estadísticas.
 ## 4. Instrucciones de Uso 📝
 La librería se puede ejecutar de la siguiente manera a través de la terminal:
 
-# mdlinks path [options]
+### mdlinks path [options]
   
   1. Si ingresa sólo mdlinks mostrará una guia de procedimiento para ingresar la ruta o pedir ayuda 
   
