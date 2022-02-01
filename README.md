@@ -37,7 +37,9 @@ Mediante issues y milestones se pudo organizar y planificar tareas y objetivos c
 
 ### Diagrama de Flujo de Api
 
+
 ### Diagrama de Flujo de CLI 
+![diagramaCli](https://user-images.githubusercontent.com/89501132/152016681-015fff07-b781-4f89-8afd-c76df65fe8cf.png)
 
 
 ## 4. Instrucciones de Uso 📝
