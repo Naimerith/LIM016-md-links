@@ -45,23 +45,23 @@ Mediante issues y milestones se pudo organizar y planificar tareas y objetivos c
 ## 4. Instrucciones de Uso 📝
 La librería se puede ejecutar de la siguiente manera a través de la terminal:
 
-### mdlinks path [options]
+### 🚩 mdlinks path [options]
   
-  1. Si ingresa sólo mdlinks mostrará una guia de procedimiento para ingresar la ruta o pedir ayuda 
+  1. 📌 Si ingresa sólo mdlinks mostrará una guia de procedimiento para ingresar la ruta o pedir ayuda 
   
   ![mdlinks](https://user-images.githubusercontent.com/89501132/151981915-23b35d24-89d1-4f66-8b27-694077bd740f.png)
   
 
   2. Para solicitar ayuda y ver las Instrucciones de Uso:
   
-  Ingrese ☛ mdlinks --help
+  📌 Ingrese ☛ mdlinks --help
   
   ![mdlinks_help](https://user-images.githubusercontent.com/89501132/151982277-d517fa11-94f4-4843-bf24-dba0b0d1e130.png)
   
 
   3. Para hacer una petición HTTP y averiguar si el link funciona o no.
   
-   Ingrese ☛ mdlinks path --validate ó -v 
+  📌 Ingrese ☛ mdlinks path --validate ó -v 
   
   El output en este caso incluye la palabra ok o fail después de la URL, así como el status de la respuesta recibida a la petición HTTP a dicha URL.
   
@@ -70,7 +70,7 @@ La librería se puede ejecutar de la siguiente manera a través de la terminal:
 
   4. Para estadísticas básicas sobre los links.
   
-   Ingrese ☛ mdlinks path --stats ó -s
+   📌 Ingrese ☛ mdlinks path --stats ó -s
   
   El output (salida) será un texto con el total de links y los links unicos. 
   
@@ -79,7 +79,7 @@ La librería se puede ejecutar de la siguiente manera a través de la terminal:
 
   5.  Para obtener estadísticas que necesiten de los resultados de la validación podemos combinar comandos; 
   
-  Ingrese ☛ mdlinks path --stats --validate ó --validate --stats
+ 📌 Ingrese ☛ mdlinks path --stats --validate ó --validate --stats
   
   El output (salida) será un texto con el total de links, los links unicos y los links rotos. 
   
