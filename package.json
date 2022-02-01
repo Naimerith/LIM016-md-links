@@ -1,6 +1,22 @@
 {
-  "name": "md-links",
+  "name": "md-links-naimerith",
   "version": "0.1.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "links",
+    "markdown",
+    "NodeJs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Naimerith/LIM016-md-links"
+  },
+  "author": "Naimerith Magdaleno",
+  "email": "naimerith89@gmail.com",
+  "license": "ISC",
   "type": "module",
   "bin": {
     "mdlinks": "./cli.js"

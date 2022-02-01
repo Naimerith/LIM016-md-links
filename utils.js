@@ -1,4 +1,3 @@
-#!/usr/bin/env nodo  //De esa manera, le estamos diciendo a los sistemas *nix que el intérprete de nuestro archivo JavaScript debe /usr/bin/env nodebuscar el nodeejecutable instalado localmente.
 import index from './index.js';
 import chalk from 'chalk';
 
@@ -8,12 +7,12 @@ const statistics = (links) => {
         //console.log(extractOnlyHref);
         const hrefSinRepeat = new Set(extractOnlyHref); //elimino los links repetidos devuelve un objeto
         console.log(chalk.cyan.bold(` 
-        ╔═══════ ≪ •❈• ≫ ═══════╗
-
+        ╔═══════ ≪ •❈ • ≫ ═══════╗
+    
             ➣ Total_Links:  ${extractOnlyHref.length}   \n\t\t
             ➣ Links_Unicos:  ${hrefSinRepeat.size} \n\t\t
             
-        ╚═══════ ≪ •❈• ≫ ═══════╝
+        ╚═══════ ≪ •❈ • ≫ ═══════╝
             `));
     });
 }
@@ -21,17 +20,14 @@ const statistics = (links) => {
 
 const broken = (links) => {
     links.then(res => {
-        const brokenLinks = res.map((e) => e.status != 200);
-        //console.log(brokenLinks);
-        //console.log(brokenLinks, "hola");
+        console.log(res)
+        const brokenLinks = res.filter((e) => e.status >= 400);
         console.log(chalk.cyan.bold(` 
-        ╔═══════ ≪ •❈• ≫ ═══════╗
+        ╔═══════ ≪ •❈ • ≫ ═══════╗
 
-            ➣ Total_Links:  ${statistics.total_links}  \n\t\t 
-            ➣ Links_Unicos:  ${statistics.links_unicos} \n\t\t
             ➣ Links_Rotos:  ${brokenLinks.length}  
 
-        ╚═══════ ≪ •❈• ≫ ═══════╝
+        ╚═══════ ≪ •❈ • ≫ ═══════╝
             `));
     })
 }
