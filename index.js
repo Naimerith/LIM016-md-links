@@ -4,8 +4,8 @@ import funciones from './funciones.js';
 
 const mdLinks = (path, options) => {
     return new Promise((res, rej) => {
-        const pathExist = funciones.pathExists(path); //verifico que la ruta existe  //devuelve un boleano 
-        if (pathExist === false) { //si la ruta no existe muestro msj donde indico que no es valida 
+        const pathExist = funciones.pathExists(path);
+        if (pathExist === false) {
             rej("The path entered is invalid")
         } else {
             const pathAbsolute = funciones.convertPathInAbsolute(path);
@@ -20,10 +20,10 @@ const mdLinks = (path, options) => {
     });
 }
 
-/* mdLinks(process.argv[2], { validate: true }) //esto es lo que debe retornar mi funcion // path que iria en el argumento 2 y un objeto con el validate: true
+/* mdLinks(process.argv[2], { validate: false }) 
     .then(res => console.log(res))
-    .catch(err => console.log(err));
- */
+    .catch(err => console.log(err)); */
+
 
 export default { mdLinks }
 

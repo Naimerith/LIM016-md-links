@@ -19,6 +19,7 @@ describe('pathExists', () => {
   });
 });
 
+
 describe('convertPathInAbsolute', () => {
   it('Deberia ser una función', () => {
     expect(typeof funciones.convertPathInAbsolute).toBe('function')
