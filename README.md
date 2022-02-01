@@ -42,7 +42,7 @@ algunas estadísticas.
 ## 4. Instrucciones de Uso 📝
 La librería se puede ejecutar de la siguiente manera a través de la terminal:
 
-# mdlinks <path-to-file> [options]
+# mdlinks path [options]
   
   1. Si ingresa sólo mdlinks mostrará una guia de procedimiento para ingresar la ruta o pedir ayuda 
   
@@ -58,7 +58,7 @@ La librería se puede ejecutar de la siguiente manera a través de la terminal:
 
   3. Para hacer una petición HTTP y averiguar si el link funciona o no.
   
-   Ingrese ☛ mdlinks <path-to-file> --validate ó -v 
+   Ingrese ☛ mdlinks path --validate ó -v 
   
   El output en este caso incluye la palabra ok o fail después de la URL, así como el status de la respuesta recibida a la petición HTTP a dicha URL.
   
@@ -67,7 +67,7 @@ La librería se puede ejecutar de la siguiente manera a través de la terminal:
 
   4. Para estadísticas básicas sobre los links.
   
-   Ingrese ☛ mdlinks <path-to-file> --stats ó -s
+   Ingrese ☛ mdlinks path --stats ó -s
   
   El output (salida) será un texto con el total de links y los links unicos. 
   
@@ -76,7 +76,7 @@ La librería se puede ejecutar de la siguiente manera a través de la terminal:
 
   5.  Para obtener estadísticas que necesiten de los resultados de la validación podemos combinar comandos; 
   
-  Ingrese ☛ mdlinks <path-to-file> --stats --validate ó --validate --stats
+  Ingrese ☛ mdlinks path --stats --validate ó --validate --stats
   
   El output (salida) será un texto con el total de links, los links unicos y los links rotos. 
   
