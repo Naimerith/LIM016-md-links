@@ -3,7 +3,7 @@
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
-* [2. Intalación](#2-instalación)
+* [2. Instalación](#2-instalación)
 * [3. Plan de Acción](#3-plan-de-acción)
 * [4. Instrucciones de Uso](#4-instrucciones-de-uso)
 * [5. Autora](#5-autora)
