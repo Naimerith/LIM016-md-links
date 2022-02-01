@@ -35,8 +35,12 @@ algunas estadísticas.
 El desarrollo del proyecto se realizó a través de Git Projects con una serie de issues y milestones para priorizar y organizar el trabajo, y para poder hacer seguimiento del progreso del mismo. 
 Mediante issues y milestones se pudo organizar y planificar tareas y objetivos concretos.
 
+![gitproject](https://user-images.githubusercontent.com/89501132/152055045-92f3ef00-cd6d-478b-b06c-5f1a51c75398.png)
+
+ Para visualizar mejor que hacer y planificar las tareas y objetivos, se realizaron diagramas de flujo.
 ### Diagrama de Flujo de Api
 
+![diagramaApi](https://user-images.githubusercontent.com/89501132/152055461-bedc149a-374b-4b6f-9233-5e7751d8db21.png)
 
 ### Diagrama de Flujo de CLI 
 ![diagramaCli](https://user-images.githubusercontent.com/89501132/152016681-015fff07-b781-4f89-8afd-c76df65fe8cf.png)
